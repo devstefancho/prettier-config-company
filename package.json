@@ -1,6 +1,6 @@
 {
   "name": "@stevencho/prettier-config-company",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0",
   "private": false,
   "description": "Prettier for Company project",
   "main": "index.json",
@@ -10,6 +10,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devstefancho/prettier-config-company.git"
+  },
+  "peerDependencies": {
+    "prettier": "2.6.2"
   },
   "author": "steven",
   "license": "ISC",
