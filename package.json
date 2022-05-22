@@ -1,0 +1,20 @@
+{
+  "name": "@stevencho/prettier-config-company",
+  "version": "1.0.0-beta.0",
+  "private": false,
+  "description": "Prettier for Company project",
+  "main": "index.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devstefancho/prettier-config-company.git"
+  },
+  "author": "steven",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devstefancho/prettier-config-company/issues"
+  },
+  "homepage": "https://github.com/devstefancho/prettier-config-company"
+}
