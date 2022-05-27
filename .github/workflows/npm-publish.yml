@@ -11,15 +11,19 @@ jobs:
   publish-npm-latest:
     if: ${{ github.event.release.tag_name == 'release' }}
     runs-on: ubuntu-latest
+    
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
+          scope: '@fitpet'
+      - run: echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      
 
   publish-npm-beta:
     if: ${{ github.event.release.tag_name == 'beta' }}
