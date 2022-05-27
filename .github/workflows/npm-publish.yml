@@ -19,6 +19,13 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
           scope: '@fitpet'
+      - name: Configure npm
+        run: |
+          echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
+          cat .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      
       - run: npm publish
         env:
           NPM_JS: ${{secrets.NPM_TOKEN}}
