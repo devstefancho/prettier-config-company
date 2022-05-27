@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print Github PR
-        - run: echo ${{ github.event.pull_request.title }}
+        run: echo ${{ github.event.pull_request.title }}
