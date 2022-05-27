@@ -1,7 +1,7 @@
 name: Print Current PR
-on: 
+on:
   pull_request:
-    types: 
+    types:
       - opened
     branches:
       - 'main'
@@ -19,7 +19,7 @@ jobs:
           echo ${{ github.event.pull_request.title }}
           echo ${{ github.event.pull_request.body }}
       # - name: Create PR Duplication
-      #   run: 
+      #   run:
 
   print-github-object-context:
     runs-on: ubuntu-latest
@@ -39,11 +39,12 @@ jobs:
           script: |
             const { repo, owner } = context.repo;
             const { title, body, head } = context.payload.pull_request;
+            console.dir(head)
             const result = await github.rest.pulls.create({
               title,
               owner,
               repo,
-              head: '${{ head.ref }}',
+              head: 'feature/test-pr',
               base: 'staging',
               body,
             });
@@ -51,7 +52,7 @@ jobs:
               title,
               owner,
               repo,
-              head: '${{ head.ref }}',
+              head: 'feature/test-pr',
               base: 'prod',
               body,
             });
