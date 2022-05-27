@@ -9,7 +9,7 @@ on:
 
 jobs:
   publish-npm-latest:
-    if: ${{ github.event.release.tag_name == 'release' }}
+    if: ${{ github.event.release.tag_name == *"release"* }}
     runs-on: ubuntu-latest
     
     steps:
