@@ -85,41 +85,66 @@
 #               env:
 #                   NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
-name: Node.js Package
+# name: Node.js Package
 
+# on:
+#   push:
+#     branches:
+#       - 'main'
+#   workflow_dispatch:
+#     inputs:
+#       logLevel:
+#         description: 'Log level'     
+#         required: true
+#         default: 'test' 
+#         type: choice
+#         options:
+#         - test
+#       tags:
+#         description: 'Test scenario tags'
+#         required: false 
+#         type: boolean
+# #       environment:
+# #         description: 'Environment to run tests against'
+# #         type: environment
+# #         required: true 
+
+# jobs:
+#   publish-npm:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: 16
+#           registry-url: https://registry.npmjs.org/
+#       - run: npm publish
+#         env:
+#           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+                  
+
+
+name: Publish package to GitHub Packages
 on:
   push:
     branches:
       - 'main'
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'     
-        required: true
-        default: 'test' 
-        type: choice
-        options:
-        - test
-      tags:
-        description: 'Test scenario tags'
-        required: false 
-        type: boolean
-#       environment:
-#         description: 'Environment to run tests against'
-#         type: environment
-#         required: true 
-
 jobs:
-  publish-npm:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest 
+    permissions: 
+      contents: read
+      packages: write 
     steps:
       - uses: actions/checkout@v3
+      # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com'
+          # Defaults to the user or organization that owns the workflow file
+          scope: '@devstefancho'
+      - run: npm ci
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-                  
-
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

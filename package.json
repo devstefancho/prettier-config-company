@@ -1,5 +1,5 @@
 {
-  "name": "prettier-config-test-devstefancho",
+  "name": "@devstefancho/prettier-config-company",
   "version": "1.0.0",
   "description": "Prettier for Company project",
   "main": "index.json",
