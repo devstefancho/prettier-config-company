@@ -43,7 +43,7 @@ jobs:
               title,
               owner,
               repo,
-              head: '${{ github.ref_name }}',
+              head: 'feature/test-pr',
               base: 'staging',
               body,
             });
