@@ -11,6 +11,9 @@ jobs:
   publish-npm-latest:
     if: contains(github.event.release.tag_name, 'release')
     runs-on: ubuntu-latest
+    environment: NPM_JS
+    env:
+      npm_token: ${{secrets.NPM_TOKEN}}
     
     steps:
       - uses: actions/checkout@v3
@@ -21,14 +24,11 @@ jobs:
           scope: '@fitpet'
       - name: Configure npm
         run: |
-          echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
+          echo '//registry.npmjs.org/:_authToken=${npm_token}' > .npmrc
           cat .npmrc
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm ci
       - run: npm publish
-        env:
-          NPM_JS: ${{secrets.NPM_TOKEN}}
+
       
 
   publish-npm-beta:
