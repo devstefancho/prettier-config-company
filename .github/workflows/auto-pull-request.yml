@@ -25,7 +25,7 @@ jobs:
               ].join('\n')
             });
             github.rest.issues.addLabels({
-              labels: ['staging', 'pending']
+              labels: ['bug']
             });
   print-github-object:
     runs-on: ubuntu-latest
