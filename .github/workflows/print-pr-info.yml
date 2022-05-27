@@ -10,5 +10,9 @@ jobs:
   print-github-object:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
       - name: Print Github PR
         run: echo ${{ github.event.pull_request.title }}
