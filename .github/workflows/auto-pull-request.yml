@@ -8,6 +8,8 @@ jobs:
   create-pull-request:
     runs-on: ubuntu-latest
     steps:
+      - name: Print current PR
+        run: echo ${{ github.event.pull_request.title }}
       - name: Create Pull Request
         uses: actions/github-script@v6
         with:
