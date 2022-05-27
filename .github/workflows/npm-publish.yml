@@ -11,23 +11,20 @@ jobs:
   publish-npm-latest:
     if: contains(github.event.release.tag_name, 'release')
     runs-on: ubuntu-latest
-    environment: NPM_JS
-    env:
-      NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-    
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      # Publish to NPMJS
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
         with:
           node-version: 16
-          registry-url: 'https://registry.npmjs.org/'
-      - name: Publish to NPMJS
-        run: |
-          npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
-          npm config set scope "@fitpet"
-          npm config list
-          npm publish --access public 
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install dependencies and build 🔧
+        run: npm install && npm run build
+      - name: Publish package on NPM 📦
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
 
   publish-npm-beta:
