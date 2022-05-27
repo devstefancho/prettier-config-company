@@ -38,9 +38,8 @@ jobs:
         with:
           script: |
             const { repo, owner } = context.repo;
-            const { title, body } = context.payload.pull_request;
-            const { rest, head } = github
-            const result = await rest.pulls.create({
+            const { title, body, head } = context.payload.pull_request;
+            const result = await github.rest.pulls.create({
               title,
               owner,
               repo,
@@ -48,7 +47,7 @@ jobs:
               base: 'staging',
               body,
             });
-            const result = await rest.pulls.create({
+            const result = await github.rest.pulls.create({
               title,
               owner,
               repo,
