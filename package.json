@@ -14,9 +14,6 @@
   "peerDependencies": {
     "prettier": "2.6.2"
   },
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
-  },
   "author": "steven",
   "license": "ISC",
   "bugs": {
