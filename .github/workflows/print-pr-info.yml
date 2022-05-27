@@ -29,3 +29,21 @@ jobs:
         with:
           script: |
             console.dir(context)
+
+  create-staging-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Github Object
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { payload: { pull_request }} = context
+            const { title, body } = pull_request
+            const result = await github.rest.pulls.create({
+              title,
+              owner,
+              repo,
+              head: '${{ github.ref_name }}',
+              base: 'staging',
+              body,
+            });
