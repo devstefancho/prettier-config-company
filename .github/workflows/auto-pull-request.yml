@@ -34,3 +34,11 @@ jobs:
         with:
           script: |
             console.dir(github)
+  print-github-object-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Github Object
+        uses: actions/github-script@v6
+        with:
+          script: |
+            console.dir(context)
