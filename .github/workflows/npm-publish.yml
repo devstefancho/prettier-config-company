@@ -25,7 +25,7 @@ jobs:
           cat .npmrc
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      
+      - run: npm ci
       - run: npm publish
         env:
           NPM_JS: ${{secrets.NPM_TOKEN}}
