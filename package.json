@@ -1,6 +1,6 @@
 {
   "name": "@stevencho/prettier-config-company",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "description": "Prettier for Company project",
   "main": "index.json",
