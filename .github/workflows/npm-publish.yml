@@ -19,12 +19,14 @@ jobs:
         with:
           node-version: 16
           registry-url: 'https://registry.npmjs.org'
+      - name: Npm ci
+        run: npm ci
       - name: Publish package on NPM 📦
-        run: |
-          echo '//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN  }}' > ${{ github.workspace }}/.npmrc
-          npm publish --access public
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          token: ${{ secrets.NPM_TOKEN }}
       
 
   publish-npm-beta:
