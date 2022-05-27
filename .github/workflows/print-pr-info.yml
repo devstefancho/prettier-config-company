@@ -38,8 +38,7 @@ jobs:
         with:
           script: |
             const { repo, owner } = context.repo;
-            const { payload: { pull_request }} = context
-            const { title, body } = pull_request
+            const { title, body } = context.payload.pull_request;
             const result = await github.rest.pulls.create({
               title,
               owner,
