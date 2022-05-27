@@ -13,22 +13,21 @@ jobs:
     runs-on: ubuntu-latest
     environment: NPM_JS
     env:
-      npm_token: ${{secrets.NPM_TOKEN}}
+      NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
     
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
+      # Publish to NPMJS
         with:
           node-version: 16
-          registry-url: https://registry.npmjs.org/
-          scope: '@fitpet'
-      - name: Configure npm
+          registry-url: 'https://registry.npmjs.org/'
+      - name: Publish to NPMJS
         run: |
-          echo '//registry.npmjs.org/:_authToken=${npm_token}' > .npmrc
-          cat .npmrc
-      - run: npm ci
-      - run: npm publish
-
+          npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
+          npm config set scope "@fitpet"
+          npm config list
+          npm publish --access public 
       
 
   publish-npm-beta:
