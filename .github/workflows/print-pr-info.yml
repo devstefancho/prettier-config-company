@@ -19,3 +19,12 @@ jobs:
         run: echo ${{ github.event.pull_request.body }}
       # - name: Create PR Duplication
       #   run: 
+
+  print-github-object-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Github Object
+        uses: actions/github-script@v6
+        with:
+          script: |
+            console.dir(context)
