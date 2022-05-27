@@ -1,0 +1,11 @@
+name: Print Current PR
+on: 
+  pull_request:
+    types: [opened]
+
+jobs:
+  print-github-object:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Github PR
+        - run: echo ${{ github.event.pull_request.title }}
