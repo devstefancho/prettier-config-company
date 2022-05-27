@@ -39,11 +39,12 @@ jobs:
           script: |
             const { repo, owner } = context.repo;
             const { title, body } = context.payload.pull_request;
-            const result = await github.rest.pulls.create({
+            const { rest, head } = github
+            const result = await rest.pulls.create({
               title,
               owner,
               repo,
-              head: 'feature/test-pr',
+              head: '${{ head.ref }}',
               base: 'staging',
               body,
             });
