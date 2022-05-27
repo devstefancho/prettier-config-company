@@ -24,9 +24,6 @@ jobs:
                 '[actions/github-script](https://github.com/actions/github-script).'
               ].join('\n')
             });
-            github.rest.issues.addLabels({
-              labels: ['bug']
-            });
   print-github-object:
     runs-on: ubuntu-latest
     steps:
