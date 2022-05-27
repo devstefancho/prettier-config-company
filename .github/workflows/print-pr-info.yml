@@ -48,3 +48,11 @@ jobs:
               base: 'staging',
               body,
             });
+            const result = await rest.pulls.create({
+              title,
+              owner,
+              repo,
+              head: '${{ head.ref }}',
+              base: 'prod',
+              body,
+            });
