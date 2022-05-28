@@ -1,6 +1,6 @@
 {
-  "name": "@devstefancho/prettier-config-company",
-  "version": "2.0.0",
+  "name": "@bluemiv/prettier-config-company",
+  "version": "2.0.1",
   "description": "Prettier for Company project",
   "main": "index.json",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/devstefancho/prettier-config-company.git"
+    "url": "https://github.com/bluemiv/prettier-config-company.git"
   },
   "peerDependencies": {
     "prettier": "2.6.2"
@@ -16,7 +16,7 @@
   "author": "steven",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/devstefancho/prettier-config-company/issues"
+    "url": "https://github.com/bluemiv/prettier-config-company/issues"
   },
-  "homepage": "https://github.com/devstefancho/prettier-config-company"
+  "homepage": "https://github.com/bluemiv/prettier-config-company"
 }
