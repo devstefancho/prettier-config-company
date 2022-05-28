@@ -1,17 +1,14 @@
 name: Manual Trigger 
-
 on:
   workflow_dispatch:
     inputs:
       logLevel:
         description: 'Log level'     
         required: true
-        default: 'warning' 
+        default: 'info' 
         type: choice
         options:
         - info
-        - warning
-        - debug 
       tags:
         description: 'Test scenario tags'
         required: false 
@@ -19,9 +16,8 @@ on:
 
 jobs:
   release:
-    name: 🚀 release
     runs-on: ubuntu-latest
-      steps:
+    steps:
         - name: 📚 checkout
           uses: actions/checkout@v3
         - name: 🟢 node
