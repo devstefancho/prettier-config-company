@@ -1,6 +1,17 @@
 name: Publish package to GitHub Packages
 on:
   workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+          - debug
+          - info
+          - warning
+          - error
 
 jobs:
   build:
