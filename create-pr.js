@@ -1,6 +1,11 @@
 module.exports = async ({ context, github }, customForFitpet) => {
   const { repo, owner } = context.repo;
-  const { title, body, head } = context.payload.pull_request;
+  const { title, body, head, labels } = context.payload.pull_request;
+  console.log(labels);
+  if (labels.find(label => /only/.test(label))) {
+    console.log('Only label exist')
+    return;
+  }
   const result = await github.rest.pulls.create({
     title,
     owner,
