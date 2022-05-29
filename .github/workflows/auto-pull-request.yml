@@ -18,7 +18,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const script = require('./create-pr.js')
+            const script = require('./github/workflows/scripts/create-pr.js')
             customForFitpet = { base: 'staging' }
             await script({ context, github }, customForFitpet)
   create-main-pr:
