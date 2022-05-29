@@ -1,4 +1,4 @@
-module.export = async ({ context, github }, base) => {
+module.export = async ({ context, github }, customForFitpet) => {
   const { repo, owner } = context.repo;
   const { title, body, head } = context.payload.pull_request;
   const result = await github.rest.pulls.create({
@@ -6,7 +6,7 @@ module.export = async ({ context, github }, base) => {
     owner,
     repo,
     head: head.ref,
-    base,
+    base: customForFitpet.base,
     body,
   });
   github.rest.issues.addLabels({
