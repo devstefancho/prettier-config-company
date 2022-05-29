@@ -22,7 +22,7 @@ jobs:
               title,
               owner,
               repo,
-              head: ${{ head.ref }},
+              head: head.ref,
               base: 'staging',
               body,
             });
@@ -45,7 +45,7 @@ jobs:
               title,
               owner,
               repo,
-              head: ${{ head.ref }},
+              head: head.ref,
               base: 'main',
               body,
             });
