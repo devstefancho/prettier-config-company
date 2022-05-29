@@ -1,0 +1,24 @@
+name: Trigger Test11
+
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'info' 
+        type: choice
+        options:
+        - info
+jobs:
+  find_path:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Print Github Object
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const path = require('path')
+            console.log(path.resolve('create-pr.js'))
