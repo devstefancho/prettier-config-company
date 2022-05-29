@@ -1,3 +1,5 @@
+# https://github.com/actions/github-script
+
 name: Create PR (Staging, Main)
 on:
   pull_request:
@@ -20,7 +22,7 @@ jobs:
               title,
               owner,
               repo,
-              head: 'feature/test-pr',
+              head: ${{ head.ref }},
               base: 'staging',
               body,
             });
@@ -43,7 +45,7 @@ jobs:
               title,
               owner,
               repo,
-              head: 'feature/test-pr',
+              head: ${{ head.ref }},
               base: 'main',
               body,
             });
