@@ -19,7 +19,6 @@ jobs:
         with:
           script: |
             const script = require('./create-pr.js')
-            console.log(script)
             customForFitpet = { base: 'staging' }
             await script({ context, github }, customForFitpet)
   create-main-pr:
