@@ -16,7 +16,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const script = require('${{ github.workspace }}/.github/workflows/scripts/create-pr.js')
+            const script = require('/.github/workflows/scripts/create-pr.js')
             script({ context, github }, base)
   create-main-pr:
     runs-on: ubuntu-latest
@@ -25,5 +25,5 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const script = require('${{ github.workspace }}/.github/workflows/scripts/create-pr.js')
+            const script = require('/.github/workflows/scripts/create-pr.js')
             script({ context, github }, base)
