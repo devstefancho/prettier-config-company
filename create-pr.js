@@ -4,14 +4,14 @@ module.exports = async ({ context, github }, customForFitpet) => {
   console.log(labels);
 
   if (
-    labels.find((label) => {
+    labels.find(({ name }) => {
       const hasExcludeLabel =
-        /exclude/.label.name &&
-        new RegExp(customForFitpet.base).test(label.name);
+        /exclude/.name &&
+        new RegExp(customForFitpet.base).test(name);
       console.log(
         `${
           hasExcludeLabel &&
-          `Exluding PR to ${customForFitpet.base} by ${label.name} label`
+          `Exluding PR to ${customForFitpet.base} by ${name} label`
         }`
       );
       return hasExcludeLabel;
