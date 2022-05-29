@@ -23,5 +23,5 @@ jobs:
             const path = require('path')
             const fs = require('fs')
             console.log(path.resolve('create-pr.js'))
-            var files = fs.readdirSync('/assets/photos/');
+            var files = fs.readdirSync('./');
             console.log(files)
