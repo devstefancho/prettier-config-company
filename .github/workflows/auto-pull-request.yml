@@ -44,7 +44,7 @@ jobs:
               owner,
               repo,
               head: 'feature/test-pr',
-              base: 'prod',
+              base: 'main',
               body,
             });
             github.rest.issues.addLabels({
