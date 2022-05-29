@@ -1,6 +1,8 @@
 module.exports = async ({ context, github }, customForFitpet) => {
   const { repo, owner } = context.repo;
   const { title, body, head } = context.payload.pull_request;
+  console.log('bbbaseeee')
+  console.dir(base);
   const result = await github.rest.pulls.create({
     title,
     owner,
