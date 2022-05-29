@@ -2,8 +2,8 @@ module.exports = async ({ context, github }, customForFitpet) => {
   const { repo, owner } = context.repo;
   const { title, body, head, labels } = context.payload.pull_request;
   console.log(labels);
-  if (labels.find(label => /only/.test(label.name))) {
-    console.log('Only label exist')
+  if (labels.find(label => /exclude/.label.name && new RegExp(customForFitpet.base).test(label.name))) {
+    console.log(`Exluding PR to ${customForFitpet.base} by ${label.name} label`)
     return;
   }
   const result = await github.rest.pulls.create({
