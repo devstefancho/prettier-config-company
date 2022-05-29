@@ -2,8 +2,21 @@ module.exports = async ({ context, github }, customForFitpet) => {
   const { repo, owner } = context.repo;
   const { title, body, head, labels } = context.payload.pull_request;
   console.log(labels);
-  if (labels.find(label => /exclude/.label.name && new RegExp(customForFitpet.base).test(label.name))) {
-    console.log(`Exluding PR to ${customForFitpet.base} by ${label.name} label`)
+
+  if (
+    labels.find((label) => {
+      const hasExcludeLabel =
+        /exclude/.label.name &&
+        new RegExp(customForFitpet.base).test(label.name);
+      console.log(
+        `${
+          hasExcludeLabel &&
+          `Exluding PR to ${customForFitpet.base} by ${label.name} label`
+        }`
+      );
+      return hasExcludeLabel;
+    })
+  ) {
     return;
   }
   const result = await github.rest.pulls.create({
