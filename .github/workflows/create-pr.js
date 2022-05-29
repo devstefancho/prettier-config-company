@@ -1,4 +1,4 @@
-moudule.export = async ({ context, github, base }) => {
+moudule.export = async ({ context, github }, base) => {
   const { repo, owner } = context.repo;
   const { title, body, head } = context.payload.pull_request;
   const result = await github.rest.pulls.create({
