@@ -20,7 +20,7 @@ jobs:
           script: |
             const script = require('./create-pr.js')
             customForFitpet = { base: 'staging' }
-            script({ context, github }, customForFitpet)
+            await script({ context, github }, customForFitpet)
   create-main-pr:
     runs-on: ubuntu-latest
     steps:
@@ -32,4 +32,4 @@ jobs:
           script: |
             const script = require('./create-pr.js')
             customForFitpet = { base: 'main' }
-            script({ context, github }, customForFitpet)
+            await script({ context, github }, customForFitpet)
