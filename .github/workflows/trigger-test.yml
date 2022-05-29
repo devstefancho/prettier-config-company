@@ -22,6 +22,9 @@ jobs:
           script: |
             const path = require('path')
             const fs = require('fs')
+            const script = require('./create-pr.js')
+            console.log('----------- script ----------')
+            console.log(script)
             console.log(path.resolve('create-pr.js'))
             var files = fs.readdirSync('./');
             console.log(files)
