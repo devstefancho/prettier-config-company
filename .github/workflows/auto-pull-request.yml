@@ -1,55 +1,35 @@
+# https://github.com/actions/github-script
+
 name: Create PR (Staging, Main)
 on:
   pull_request:
     types:
       - opened
     branches:
-      - 'alpha'
+      - alpha
 
 jobs:
   create-staging-pr:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Print Github Object
         uses: actions/github-script@v6
         with:
           script: |
-            const { repo, owner } = context.repo;
-            const { title, body, head } = context.payload.pull_request;
-            const result = await github.rest.pulls.create({
-              title,
-              owner,
-              repo,
-              head: 'feature/test-pr',
-              base: 'staging',
-              body,
-            });
-            github.rest.issues.addLabels({
-              owner,
-              repo,
-              issue_number: result.data.number,
-              labels: ['staging', 'pending']
-            });
+            const script = require('./.github/workflows/scripts/create-pr.js')
+            customForFitpet = { base: 'staging' }
+            await script({ context, github }, customForFitpet)
   create-main-pr:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Print Github Object
         uses: actions/github-script@v6
         with:
           script: |
-            const { repo, owner } = context.repo;
-            const { title, body, head } = context.payload.pull_request;
-            const result = await github.rest.pulls.create({
-              title,
-              owner,
-              repo,
-              head: 'feature/test-pr',
-              base: 'prod',
-              body,
-            });
-            github.rest.issues.addLabels({
-              owner,
-              repo,
-              issue_number: result.data.number,
-              labels: ['main', 'pending']
-            });
+            const script = require('./.github/workflows/scripts/create-pr.js')
+            customForFitpet = { base: 'main' }
+            await script({ context, github }, customForFitpet)
